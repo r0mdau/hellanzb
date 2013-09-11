@@ -9,7 +9,11 @@ reactor system so it can catch signals, and shutdown hellanzb cleanly
 import Hellanzb, sys, time
 
 import twisted.copyright
-if twisted.copyright.version >= '2.0.0':
+if twisted.copyright.version >= '11.1.0':
+    from twisted.internet.selectreactor import SelectReactor
+    from twisted.internet.posixbase import _NO_FILENO
+    from twisted.internet.posixbase import _NO_FILEDESC
+elif twisted.copyright.version >= '2.0.0' or twisted.copyright.version >= '10.0.0':
     from twisted.internet.selectreactor import SelectReactor
     from twisted.internet.selectreactor import _NO_FILENO
     from twisted.internet.selectreactor import _NO_FILEDESC
